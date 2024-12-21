@@ -1,0 +1,91 @@
+2024-12-20 13:58:53,518 - INFO - # Generando semilla
+
+2024-12-20 13:58:53,518 - INFO - # Cargar el conjunto de datos
+
+2024-12-20 13:58:53,795 - INFO - #Mostrando datos originales:
+
+2024-12-20 13:58:53,795 - INFO -             id  CustomerId    Surname  CreditScore Geography  Gender   Age  \
+0       165034    15773898   Lucchese          586    France  Female  23.0   
+1       165035    15782418       Nott          683    France  Female  46.0   
+2       165036    15807120         K?          656    France  Female  34.0   
+3       165037    15808905  O'Donnell          681    France    Male  36.0   
+4       165038    15607314    Higgins          752   Germany    Male  38.0   
+...        ...         ...        ...          ...       ...     ...   ...   
+110018  275052    15662091      P'eng          570     Spain    Male  29.0   
+110019  275053    15774133        Cox          575    France  Female  36.0   
+110020  275054    15728456      Ch'iu          712    France    Male  31.0   
+110021  275055    15687541   Yegorova          709    France  Female  32.0   
+110022  275056    15663942       Tuan          621    France  Female  37.0   
+
+        Tenure    Balance  NumOfProducts  HasCrCard  IsActiveMember  \
+0            2       0.00              2        0.0             1.0   
+1            2       0.00              1        1.0             0.0   
+2            7       0.00              2        1.0             0.0   
+3            8       0.00              1        1.0             0.0   
+4           10  121263.62              1        1.0             0.0   
+...        ...        ...            ...        ...             ...   
+110018       7  116099.82              1        1.0             1.0   
+110019       4  178032.53              1        1.0             1.0   
+110020       2       0.00              2        1.0             0.0   
+110021       3       0.00              1        1.0             1.0   
+110022       7   87848.39              1        1.0             0.0   
+
+        EstimatedSalary  
+0             160976.75  
+1              72549.27  
+2             138882.09  
+3             113931.57  
+4             139431.00  
+...                 ...  
+110018        148087.62  
+110019         42181.68  
+110020         16287.38  
+110021        158816.58  
+110022         24210.56  
+
+[110023 rows x 13 columns]
+2024-12-20 13:58:53,811 - INFO - 
+Información de Columnas:
+
+2024-12-20 13:58:53,852 - INFO - None
+2024-12-20 13:58:53,852 - INFO - # Creamos una copia para no modificar los datos originales
+2024-12-20 13:58:53,861 - INFO - # 1. Manejo de valores faltantes
+2024-12-20 13:58:53,861 - INFO - # Rellenamos valores faltantes en columnas numéricas con la mediana
+2024-12-20 13:58:53,869 - INFO - # 2. Eliminación de duplicados
+2024-12-20 13:58:54,194 - DEBUG - - Se eliminaron 0 registros duplicados
+2024-12-20 13:58:54,194 - INFO - # 3. Estandarización de texto
+2024-12-20 13:58:54,252 - DEBUG - - Columna 'Surname' estandarizada a minúsculas y sin espacios externos
+2024-12-20 13:58:54,302 - DEBUG - - Columna 'Geography' estandarizada a minúsculas y sin espacios externos
+2024-12-20 13:58:54,360 - DEBUG - - Columna 'Gender' estandarizada a minúsculas y sin espacios externos
+2024-12-20 13:58:54,361 - INFO - # 4. Manejo de valores atípicos (outliers)
+2024-12-20 13:58:54,394 - DEBUG - - Se encontraron y trataron 176 valores atípicos en 'CreditScore'
+2024-12-20 13:58:54,410 - DEBUG - - Se encontraron y trataron 4246 valores atípicos en 'Age'
+2024-12-20 13:58:54,444 - DEBUG - - Se encontraron y trataron 304 valores atípicos en 'NumOfProducts'
+2024-12-20 13:58:54,469 - INFO - # 6. Normalización de datos numéricos
+2024-12-20 13:58:54,469 - DEBUG - - Columna 'id' normalizada entre 0 y 1
+2024-12-20 13:58:54,469 - DEBUG - - Columna 'CustomerId' normalizada entre 0 y 1
+2024-12-20 13:58:54,480 - DEBUG - - Columna 'CreditScore' normalizada entre 0 y 1
+2024-12-20 13:58:54,480 - DEBUG - - Columna 'Age' normalizada entre 0 y 1
+2024-12-20 13:58:54,480 - DEBUG - - Columna 'Tenure' normalizada entre 0 y 1
+2024-12-20 13:58:54,488 - DEBUG - - Columna 'Balance' normalizada entre 0 y 1
+2024-12-20 13:58:54,493 - DEBUG - - Columna 'NumOfProducts' normalizada entre 0 y 1
+2024-12-20 13:58:54,494 - DEBUG - - Columna 'HasCrCard' normalizada entre 0 y 1
+2024-12-20 13:58:54,503 - DEBUG - - Columna 'IsActiveMember' normalizada entre 0 y 1
+2024-12-20 13:58:54,503 - DEBUG - - Columna 'EstimatedSalary' normalizada entre 0 y 1
+2024-12-20 13:58:54,503 - INFO - # 7. Conversión de tipos de datos
+2024-12-20 13:58:54,503 - INFO - # Preparando el formato de fecha
+2024-12-20 13:58:54,503 - INFO - # Convertir columnas de fecha
+2024-12-20 13:58:54,527 - DEBUG - - La Columna 'Surname' no es de tipo fecha
+2024-12-20 13:58:54,535 - DEBUG - - La Columna 'Geography' no es de tipo fecha
+2024-12-20 13:58:54,544 - DEBUG - - La Columna 'Gender' no es de tipo fecha
+2024-12-20 13:59:02,708 - INFO - # 8. Seleccionar columnas necesarias
+
+2024-12-20 13:59:02,727 - INFO - # 9. Separar las características (X) y la variable objetivo (y)
+2024-12-20 13:59:02,888 - INFO - # 10. Aplicar One-Hot Encoding a las columnas categóricas
+
+2024-12-20 13:59:03,105 - INFO - # 11. Combinar columnas codificadas con las numéricas
+
+2024-12-20 13:59:03,176 - INFO - # 12. Dividir datos en entrenamiento y prueba
+
+2024-12-20 13:59:03,296 - INFO - # 13. Aplicar SMOTE para balancear clases
+
